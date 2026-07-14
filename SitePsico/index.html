@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Júlia Semei · Psicóloga Clínica">
 <meta property="og:description" content="Terapia Cognitivo-Comportamental para reestruturar pensamentos e fazer as pazes com as suas emoções. Presencial em Patos de Minas e online.">
-<meta property="og:image" content="https://SEU-DOMINIO.com.br/assets/julia-livro.jpg">
+<meta property="og:image" content="https://psicojuliasemei.netlify.app/assets/julia-livro.jpg">
 <meta property="og:locale" content="pt_BR">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -31,8 +31,8 @@
       "@type": "Psychologist",
       "name": "Júlia Semei",
       "description": "Psicóloga clínica (CRP 04/73466), especialista em Terapias Cognitivas e Contextuais. Atendimento presencial em Patos de Minas e online.",
-      "url": "https://SEU-DOMINIO.com.br/",
-      "image": "https://SEU-DOMINIO.com.br/assets/julia-livro.jpg",
+      "url": "https://psicojuliasemei.netlify.app/",
+      "image": "https://psicojuliasemei.netlify.app/assets/julia-livro.jpg",
       "telephone": "+55-34-99237-6683",
       "priceRange": "R$200 - R$230",
       "address": {
@@ -158,6 +158,7 @@
     transition:background .25s;
   }
   .nav-cta:hover{background:var(--terracota-escuro);}
+  .nav-cta .cta-short{display:none;}
   .menu-toggle{
     display:none;background:none;border:none;cursor:pointer;
     width:38px;height:38px;align-items:center;justify-content:center;
@@ -468,20 +469,38 @@
 
   /* ---------- responsivo ---------- */
   @media (max-width:920px){
+    /* header: respiro nas bordas (sobrescreve o estilo inline do desktop) */
+    nav .nav-inner{padding-left:20px !important;padding-right:20px !important;}
+    nav .nav-mobile-links{padding-left:20px !important;padding-right:20px !important;}
+
     .nav-links{display:none;}
     .menu-toggle{display:flex;}
-    /* menu mobile fechado por padrão; abre com a classe .is-open (corrige bug do menu aberto no carregamento) */
+
+    /* botão do header mais compacto, com texto curto */
+    .nav-cta{padding:10px 18px;font-size:0.8rem;}
+    .nav-cta .cta-full{display:none;}
+    .nav-cta .cta-short{display:inline;}
+
+    /* menu mobile fechado por padrão; abre com a classe .is-open */
     .nav-mobile-links.is-open{
       display:flex;flex-direction:column;
       background:var(--creme-2);border-top:1px solid var(--linha);
-      padding:10px 32px 22px;
+      padding:10px 20px 22px;
     }
     .nav-mobile-links a{
       padding:14px 0;font-size:0.95rem;border-bottom:1px solid var(--linha);
     }
     .nav-mobile-links a:last-child{border-bottom:none;}
+
     .hero-grid, .sobre-grid, .cta-grid{grid-template-columns:1fr;}
-    .hero-photo{order:-1;max-width:340px;margin:0 auto 40px;}
+
+    /* hero: foto menor e quadrada para dar prioridade ao título na primeira dobra */
+    .hero-photo{order:-1;max-width:270px;margin:0 auto 34px;}
+    .hero-photo-frame{aspect-ratio:1/1;}
+    .hero-tag{padding:12px 16px;max-width:190px;bottom:-16px;left:-8px;border-radius:12px;}
+    .hero-tag span{font-size:0.75rem;}
+    .crp{top:-12px;right:-8px;padding:8px 14px;font-size:0.68rem;}
+
     .info-grid, .reframe-grid, .valores-grid{grid-template-columns:1fr;}
     .processo-list{grid-template-columns:1fr;}
     .processo-item{border-right:none;border-bottom:1px solid var(--linha);}
@@ -490,7 +509,7 @@
     .cta-grid{padding:36px;border-radius:20px;}
     .cta-photo{max-width:260px;margin:0 auto;}
     section{padding:76px 0;}
-    .hero{padding:130px 0 70px;}
+    .hero{padding:120px 0 70px;}
     .info-extra{grid-template-columns:1fr;}
   }
 </style>
@@ -510,7 +529,9 @@
       <a href="#faq">Dúvidas</a>
     </div>
     <div style="display:flex;align-items:center;gap:8px;">
-      <a class="nav-cta" href="https://wa.me/5534992376683?text=Ol%C3%A1%2C%20J%C3%BAlia!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20agendar%20uma%20sess%C3%A3o." target="_blank" rel="noopener">Agendar conversa</a>
+      <a class="nav-cta" href="https://wa.me/5534992376683?text=Ol%C3%A1%2C%20J%C3%BAlia!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20agendar%20uma%20sess%C3%A3o." target="_blank" rel="noopener">
+        <span class="cta-full">Agendar conversa</span><span class="cta-short">Agendar</span>
+      </a>
       <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span><span></span>
       </button>
@@ -795,7 +816,7 @@
 </a>
 
 <script>
-  // Menu mobile — toggle por classe (corrige o menu que abria sozinho no mobile)
+  // Menu mobile — toggle por classe
   const menuToggle = document.getElementById('menuToggle');
   const mobileMenu = document.getElementById('mobileMenu');
   menuToggle.addEventListener('click', () => {
