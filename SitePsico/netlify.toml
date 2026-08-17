@@ -2,3 +2,9 @@
   for = "/sitemap.xml"
   [headers.values]
     Content-Type = "application/xml"
+
+[[redirects]]
+  from = "https://psicojuliasemei.netlify.app/*"
+  to = "https://psicojuliasemei.com.br/:splat"
+  status = 301
+  force = true    
