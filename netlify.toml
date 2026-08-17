@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "https://psicojuliasemei.netlify.app/*"
+  to = "https://psicojuliasemei.com.br/:splat"
+  status = 301
+  force = true
